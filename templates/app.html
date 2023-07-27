@@ -1,0 +1,41 @@
+
+
+{% extends "includes/_base.html" %}
+{% load static %}
+
+{% block title %}
+    Application
+{% endblock title %}
+{% block style %}
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+
+{% endblock style %}
+
+{% block header %}
+    <header class="header">
+    <nav>
+        <ul>
+            <li>
+                <a href="#"><h1>View all books</h1></a>
+            </li>
+        </ul>
+    </nav>
+    </header>
+{% endblock header %}
+{% block main %}
+    {% for book in books %}
+        <div id="book-wrapper">
+            <div id="book">
+                <h2 class="book_title">{{ book.name }}, {{ book.author }}</h2>
+                <img class="img" src={{ book.image }}, width='200' height="300"/>
+                <p>{{ book.description }}</p>
+                <p>UAH {{ book.price }}</p>
+                <div>
+                <a href={{book.slug}}><button class="book-btn">Buy</button></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+ {% endblock main %}
+{% block footer %} {% endblock footer %}
